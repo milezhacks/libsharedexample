@@ -24,8 +24,9 @@ clean:
 	-rm -f $(OBJECTS)
 
 install:
-	$(INSTALL) -d $(PREFIX)/include
 	$(INSTALL) -d $(PREFIX)/lib
 	$(INSTALL) $(TARGET) $(PREFIX)/lib
-	$(INSTALL) $(HEADERS) $(PREFIX)/include
 
+stage:
+	$(INSTALL) -d $(PREFIX)/include
+	$(INSTALL) $(HEADERS) $(PREFIX)/include
