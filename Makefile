@@ -1,6 +1,7 @@
 CC           ?= gcc
 LD           ?= ld
 PREFIX       ?= /usr/local
+INSTALL      ?= install
 
 CFLAGS       = -fPIC -Wall -Werror -std=gnu99 -Iinclude
 LDFLAGS      = -shared
@@ -23,10 +24,8 @@ clean:
 	-rm -f $(OBJECTS)
 
 install:
-	-mkdir -p $(PREFIX)/bin
-	-mkdir -p $(PREFIX)/include
-	-mkdir -p $(PREFIX)/lib
-	cp $(TARGET) $(PREFIX)/lib
-	cp $(HEADERS) $(PREFIX)/include
-
+	$(INSTALL) -d $(PREFIX)/include
+	$(INSTALL) -d $(PREFIX)/lib
+	$(INSTALL) $(TARGET) $(PREFIX)/lib
+	$(INSTALL) $(HEADERS) $(PREFIX)/include
 
