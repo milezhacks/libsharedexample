@@ -6,7 +6,9 @@ INSTALL      ?= install
 CFLAGS       = -fPIC -Wall -Werror -std=gnu99 -Iinclude
 LDFLAGS      = -shared
 
-TARGET       = libexample.so
+VERSION      = 0.1
+LIBNAME      = libexample.so
+TARGET       = $(LIBNAME).$(VERSION)
 SOURCES      = example.c
 HEADERS      = example.h
 OBJECTS      = $(SOURCES:.c=.o)
@@ -22,6 +24,7 @@ $(TARGET): $(OBJECTS)
 clean:
 	-rm -f $(TARGET)
 	-rm -f $(OBJECTS)
+	-rm -f $(LIBNAME)
 
 install:
 	$(INSTALL) -d $(PREFIX)/lib
